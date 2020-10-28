@@ -17,7 +17,8 @@ const store = new Vuex.Store({
         }
     },
     getters: {
-        contacts: s => s.contacts
+        contacts: s => s.contacts,
+        contactsId: s => id => s.contacts.find(t => t.id === id)
     }
 })
 

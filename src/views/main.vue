@@ -46,7 +46,7 @@ export default {
 .main {
   max-width: 1440px;
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   margin: 0 auto;
   background: #FFFFFF;
   border-radius: 5px;
@@ -55,6 +55,7 @@ export default {
     padding: 30px 0 0;
     display: flex;
     flex-direction: column;
+    min-height: 800px;
 
     .main__create-button {
       margin: 18px 0 0 56px;

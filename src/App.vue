@@ -14,12 +14,14 @@
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
-  background: #FFFAF2
+  background: #FFFAF2;
+  min-height: 100vh;
 }
 
 body {
   margin: 0;
 }
+
 
 </style>
 

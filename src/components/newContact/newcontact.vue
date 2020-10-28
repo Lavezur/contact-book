@@ -38,10 +38,12 @@ export default {
         contName: this.contName,
         contWorkplace: this.contWorkplace,
         contPhone: this.contPhone,
-        contMail: this.contMail
+        contMail: this.contMail,
+        id: Date.now()
       }
 
       this.$store.dispatch('createContact', contact)
+      this.$emit('closePopup')
     }
   }
 }

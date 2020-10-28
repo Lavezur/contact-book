@@ -1,4 +1,5 @@
 # contbook
+Книга контактов на Vue.js
 
 ## Project setup
 ```
