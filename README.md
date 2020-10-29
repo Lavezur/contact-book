@@ -1,5 +1,5 @@
 # contbook
-Книга контактов на Vue.js
+Книга контактов на Vue.js, Vuex, scss
 
 ## Project setup
 ```
