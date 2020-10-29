@@ -10,7 +10,7 @@
           <input type="text" class="popup__form-name popup__form-input" placeholder="Имя" id="contName" v-model="contName">
           <input type="text" class="popup__form-workplace popup__form-input" placeholder="Место работы" id="contWorkplace" v-model="contWorkplace">
           <input type="tel" class="popup__form-number popup__form-input" placeholder="Контактный номер" id="contPhone" v-model="contPhone">
-          <input type="url" class="popup__form-mail popup__form-input" placeholder="Email" id="contMail" v-model="contMail">
+          <input type="email" class="popup__form-mail popup__form-input" placeholder="Email" id="contMail" v-model="contMail">
         </label>
         <button class="popup__form-submit" type="submit"><span class="popup__form-submit-text">Сохранить</span></button>
       </form>
@@ -28,6 +28,10 @@ export default {
     contPhone: '',
     contMail: ''
   }),
+
+  mounted() {
+
+  },
 
   methods: {
     closePopup () {
