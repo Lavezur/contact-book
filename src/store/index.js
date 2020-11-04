@@ -25,8 +25,10 @@ const store = new Vuex.Store({
             localStorage.setItem('contacts', JSON.stringify(state.contacts))
         },
 
-        deleteHandler (state, contact) {
-            const index = state.contacts.indexOf(contact);
+        deleteHandler (state, id) {
+            const contacts = state.contacts.concat()
+
+            const index = contacts.findIndex(t => t.id === id)
 
             state.contacts.splice(index, 1);
         }
@@ -41,8 +43,8 @@ const store = new Vuex.Store({
             commit('updateContact', contact)
         },
 
-        deleteHandler ({commit}, id) {
-            commit('deleteHandler', id)
+        deleteHandler ({commit}, contact, id) {
+            commit('deleteHandler', contact, id)
         }
     },
 
