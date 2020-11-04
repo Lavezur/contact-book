@@ -35,7 +35,7 @@ export default {
 
 .list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin: 51px 0 0;
 
 

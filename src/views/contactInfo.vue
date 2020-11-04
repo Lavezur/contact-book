@@ -1,5 +1,4 @@
 <template>
-
   <div class="contact-info" v-if="contact">
 
     <div class="contact-info__wrapper">
@@ -9,45 +8,42 @@
         <span class="contact-info__back-text">Назад</span>
       </router-link>
 
-      <form class="contact-info__form" method="post" novalidate name="contact-info-form" @submit.prevent="submitHandler">
+      <form class="contact-info__form" method="post" novalidate name="contact-info-form"
+            @submit.prevent="submitHandler">
 
         <div class="contact-info__header">
           <div class="contact-info__icon"></div>
           <label class="contact-info__form-label-name">
-            <input type="text" class="contact-info__form-name contact-info__form-input" placeholder="Имя" id="contName" v-model="contName">
+            <input type="text" class="contact-info__form-name contact-info__form-input" placeholder="Имя"
+                   id="contName" v-model="contName">
           </label>
         </div>
 
         <div class="contact-info__workplace">
           <p class="contact-info__workplace-title">Место работы</p>
           <label class="contact-info__form-label-workplace">
-            <input type="text" class="contact-info__form-workplace contact-info__form-input" placeholder="Место работы" id="contWorkplace" v-model="contWorkplace">
+            <input type="text" class="contact-info__form-workplace contact-info__form-input" placeholder="Место работы"
+                   id="contWorkplace" v-model="contWorkplace">
           </label>
         </div>
 
         <div class="contact-info__phone">
           <div class="contact-info__phone-icon"></div>
           <label class="contact-info__form-label-phone">
-            <input type="tel" class="contact-info__form-phone contact-info__form-input" placeholder="Контактный номер" id="contPhone" v-model="contPhone">
+            <input type="tel" class="contact-info__form-phone contact-info__form-input" placeholder="Контактный номер"
+                   id="contPhone" v-model="contPhone">
           </label>
         </div>
 
         <div class="contact-info__mail">
           <div class="contact-info__mail-icon"></div>
           <label class="contact-info__form-label-mail">
-            <input type="email" class="contact-info__form-mail contact-info__form-input" placeholder="Email" id="contMail" v-model="contMail">
+            <input type="email" class="contact-info__form-mail contact-info__form-input" placeholder="Email"
+                   id="contMail" v-model="contMail">
           </label>
         </div>
 
-        <div class="btn__wrapper">
-          <button class="btn" type="button" @click="deleteHandler">
-            <span class="btn-text">Удалить</span>
-          </button>
-
-          <button class="btn btn-green" type="submit">
-            <span class="btn-text btn-edit">Сохранить</span>
-          </button>
-        </div>
+        <buttons/>
 
       </form>
 
@@ -56,24 +52,31 @@
   </div>
 
   <p v-else class="contact-info__not-found">Контакт не найден :(</p>
-
 </template>
 
 <script>
+import buttons from '../components/buttons/buttons.vue'
+
 export default {
   name: 'contactInfo',
+
   computed: {
     contact() {
       return this.$store.getters.contactsId(+this.$route.params.id)
     },
   },
 
+  components: {
+    buttons
+  },
+
   data: () => ({
     contName: '',
     contWorkplace: '',
     contPhone: '',
-    contMail: ''
+    contMail: '',
   }),
+
 
   mounted() {
     this.contName = this.contact.contName
@@ -93,16 +96,12 @@ export default {
       })
       this.$router.push('/')
     },
-
-    deleteHandler () {
-      this.$store.dispatch('deleteHandler', this.contact.id)
-      this.$router.push('/')
-    }
   }
 }
 </script>
 
 <style lang="scss">
+
   .contact-info {
     max-width: 1440px;
     width: 100%;
@@ -260,41 +259,5 @@ export default {
     margin: 20% auto;
   }
 
-  .btn__wrapper {
-    display: flex;
-    flex-direction: row;
-    margin-top: 120px;
-    justify-content: flex-end;
-    max-width: 495px;
-    width: 100%;
-    align-self: flex-end;
 
-
-    .btn {
-      background-color: #FF6D6D;
-      text-align: center;
-      max-width: 228px;
-      width: 100%;
-      min-width: 89px;
-      height: 46px;
-      align-self: center;
-      cursor: pointer;
-      box-sizing: border-box;
-      border-radius: 5px;
-      outline: none;
-      border: none;
-
-      &.btn-green {
-        background-color: #79e56d;
-        margin-left: 40px;
-      }
-
-      .btn-text {
-        width: 100%;
-        color: #fff;
-        text-align: center;
-        padding: 13px 0 14px;
-      }
-    }
-  }
 </style>

@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Popup from '../components/newContact/newcontact.vue'
-import Contactlist from "@/components/contactList/contactlist";
+import Popup from '../components/popup\'s/newcontact.vue'
+import Contactlist from "@/components/contactList/contactlist"
 
 export default {
   name: 'Main',

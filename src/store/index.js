@@ -26,7 +26,7 @@ const store = new Vuex.Store({
         },
 
         deleteHandler (state, contact) {
-            let index = state.contacts.indexOf(contact);
+            const index = state.contacts.indexOf(contact);
 
             state.contacts.splice(index, 1);
         }
