@@ -27,7 +27,6 @@ const store = new Vuex.Store({
 
         deleteHandler (state, id) {
             const contacts = state.contacts.concat()
-
             const index = contacts.findIndex(t => t.id === id)
 
             state.contacts.splice(index, 1);
@@ -53,5 +52,6 @@ const store = new Vuex.Store({
         contactsId: s => id => s.contacts.find(t => t.id === id)
     }
 })
+
 
 export default store;
