@@ -1,28 +1,42 @@
 <template>
   <div class="popup-delete">
-
     <div class="popup-delete__container">
-
       <div class="popup-delete__header">
-        <div class="popup-delete__header-close" @click="closePopup"></div>
-        <span class="popup-delete__header-title">Удалить контакт ?</span>
+        <div class="popup-delete__header-close"
+             @click="closePopup"
+        />
+        <span class="popup-delete__header-title">
+          Удалить контакт ?
+        </span>
       </div>
-      <div class="popup-delete__delete" @click="deleteHandler"><span class="popup-delete__form-submit-text">Удалить</span></div>
-      <div class="popup-delete__cancel" @click="closePopup"><span class="popup-delete__form-submit-text">Отменить</span></div>
-
+      <div class="popup-delete__delete"
+           @click="deleteFromList"
+      >
+        <span class="popup-delete__form-submit-text">
+          Удалить
+        </span>
+      </div>
+      <div class="popup-delete__cancel"
+           @click="closePopup"
+      >
+        <span class="popup-delete__form-submit-text">
+          Отменить
+        </span>
+      </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: "deletecontactfromlist",
+  name: "DeleteContactFromList",
+
+  props: ['id'],
 
   computed: {
-    contact() {
-      return this.$store.getters.contactsId(+this.$route.params.id)
-    },
+    contacts () {
+      return this.$store.getters.contactsId(this.id)
+    }
   },
 
   methods: {
@@ -30,9 +44,9 @@ export default {
       this.$emit('closePopup')
     },
 
-    deleteHandler () {
-      this.contacts.$store.dispatch('deleteHandler', this.contact.id)
-      this.$router.push('/')
+    deleteFromList () {
+      this.$store.dispatch('deleteHandler', this.contacts.id)
+      this.closePopup();
     }
   },
 }
@@ -106,7 +120,7 @@ export default {
       }
 
       .popup-delete__header-close {
-        background-image: url("../../assets/close.svg");
+        background-image: url("../../assets/icons/close.svg");
         width: 24px;
         height: 24px;
         background-size: cover;

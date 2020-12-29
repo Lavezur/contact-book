@@ -2,7 +2,8 @@ import Vuex from 'vuex'
 
 const store = new Vuex.Store({
     state: {
-        contacts: JSON.parse(localStorage.getItem('contacts') || '[]')
+        contacts: JSON.parse(localStorage.getItem('contacts') || '[]'),
+        others: JSON.parse(localStorage.getItem('others') || '[]')
     },
 
     mutations: {
@@ -12,7 +13,13 @@ const store = new Vuex.Store({
             localStorage.setItem('contacts', JSON.stringify(state.contacts))
         },
 
-        updateContact(state, {id, contName, contWorkplace, contPhone, contMail}) {
+        createOthers (state, other) {
+            state.others.push(other)
+
+            localStorage.setItem('others', JSON.stringify(state.others))
+        },
+
+        updateContact (state, {id, contName, contWorkplace, contPhone, contMail}) {
             const contacts = state.contacts.concat()
 
             const index = contacts.findIndex(t => t.id === id)
@@ -25,31 +32,71 @@ const store = new Vuex.Store({
             localStorage.setItem('contacts', JSON.stringify(state.contacts))
         },
 
+        updateOthers (state, {id, contAttribute, contAttValue}) {
+            const others = state.others.concat()
+
+            const index = others.findIndex(t => t.id === id)
+            const other = others[index]
+
+            others[index] = {...other, contAttribute, contAttValue}
+
+            state.others = others
+
+            localStorage.setItem('others', JSON.stringify(state.others))
+        },
+
         deleteHandler (state, id) {
             const contacts = state.contacts.concat()
             const index = contacts.findIndex(t => t.id === id)
 
             state.contacts.splice(index, 1);
+            this.commit('saveData');
+        },
+
+        deleteOtherHandler (state, id) {
+            const others = state.others.concat()
+            const index = others.findIndex(t => t.id === id)
+
+            state.others.splice(index, 1);
+            this.commit('savaData');
+        },
+
+        saveData(state) {
+            window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
         }
     },
 
     actions: {
-        createContact ({ commit }, contact) {
+        createContact ({commit}, contact) {
             commit('createContact', contact)
+        },
+
+        createOther ({commit}, other) {
+            commit('createOthers', other)
         },
 
         updateContact ({commit}, contact) {
             commit('updateContact', contact)
         },
 
+        updateOther ({commit}, other) {
+            commit('updateOthers', other)
+        },
+
         deleteHandler ({commit}, contact, id) {
             commit('deleteHandler', contact, id)
+        },
+
+        deleteOther ({commit}, other, id) {
+            commit('deleteOtherHandler', other, id)
         }
     },
 
     getters: {
         contacts: s => s.contacts,
-        contactsId: s => id => s.contacts.find(t => t.id === id)
+        contactsId: s => id => s.contacts.find(t => t.id === id),
+        others: s => s.others,
+        othersId: s => id => s.others.find(t => t.id === id)
     }
 })
 

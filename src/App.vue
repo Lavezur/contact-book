@@ -1,5 +1,7 @@
 <template>
-  <div id="app" class="app">
+  <div id="app"
+       class="app"
+  >
     <Navigation/>
     <div class="container">
       <router-view/>
@@ -14,7 +16,7 @@
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
-  background: #FFFAF2;
+  background: #dfe3ff;
   min-height: 100vh;
 }
 
@@ -22,11 +24,14 @@ body {
   margin: 0;
 }
 
+*{
+  text-decoration:none;
+}
 
 </style>
 
 <script>
-import Navigation from "@/components/navigation/navigation";
+import Navigation from "./components/Navigation/Navigation";
 export default {
   components: {Navigation}
 }

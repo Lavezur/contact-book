@@ -1,71 +1,88 @@
 <template>
-
-  <popupDelete
+  <DeleteContactFromList
       v-if="isPopupDeleteVisible"
       @closePopup="closePopupDelete"
+      @showPopupDelete="showPopupDelete"
+      :id="this.id"
   />
-
   <div class="list" v-if="contacts.length">
-    <div class="list__content" v-for="(contact) of contacts"
-         :key="contact.id">
+    <div class="list__content"
+         v-for="(contact) of contacts"
+         :key="contact.id"
+    >
       <div class="list__content-wrapper">
-
         <div class="list__info">
-          <div class="list__picture"></div>
+          <div class="list__picture" />
           <div class="list__name-work">
-            <p class="list__name">{{contact.contName}}</p>
-            <p class="list__workplace">{{contact.contWorkplace}}</p>
+            <p class="list__name">
+              {{contact.contName}}
+            </p>
+            <p class="list__workplace">
+              {{contact.contWorkplace}}
+            </p>
           </div>
-          <p class="list__phone">{{contact.contPhone}}</p>
-          <p class="list__email">{{contact.contMail}}</p>
+          <p class="list__phone">
+            {{contact.contPhone}}
+          </p>
+          <p class="list__email">
+            {{contact.contMail}}
+          </p>
         </div>
         <div class="list__management">
-          <button class="list__management-delete" type="button" @click="showPopupDelete"></button>
-          <router-link class="list__management-open" tag="button" :to="'/contactInfo/' + contact.id"></router-link>
+          <button class="list__management-delete"
+                  type="button"
+                  @click="showPopupDelete(contact.id)"
+          />
+          <router-link class="list__management-open"
+                       tag="button"
+                       :to="'/contactInfo/' + contact.id"
+          />
         </div>
       </div>
     </div>
   </div>
-  <p class="list__null" v-else>У вас пока нет контактов :(</p>
+  <p class="list__null"
+     v-else
+  >
+    У вас пока нет контактов :(
+  </p>
 </template>
 
 <script>
-import popupDelete from '../popup\'s/deletecontactfromlist.vue'
+import DeleteContactFromList from '../Popup\'s/DeleteContactFromList'
 
 export default {
-  name: "contactlist",
+  name: "ContactList",
   computed: {
-    contacts() {
+    contacts () {
       return this.$store.getters.contacts
     }
   },
 
   data () {
     return {
-      isPopupDeleteVisible: false
+      isPopupDeleteVisible: false,
+      id: ''
     }
   },
 
   components: {
-    popupDelete
+    DeleteContactFromList
   },
 
   methods: {
-    showPopupDelete () {
-      this.isPopupDeleteVisible = true
+    showPopupDelete (id) {
+      this.isPopupDeleteVisible = true;
+      this.id = id
     },
     closePopupDelete () {
       this.isPopupDeleteVisible = false
-    },
+    }
   }
 }
 </script>
 
 <style lang="scss">
-*{
-  text-decoration:none;
-}
-
 .list {
   display: flex;
   flex-direction: column-reverse;
@@ -90,7 +107,7 @@ export default {
         justify-content: space-between;
 
         .list__picture {
-          background-image: url("../../assets/contactIcon.svg");
+          background-image: url("../../assets/icons/contactIcon.svg");
           width: 71.75px;
           height: 71.75px;
           background-size: cover;
@@ -166,7 +183,7 @@ export default {
         align-self: center;
 
         .list__management-delete {
-          background-image: url("../../assets/delete.svg");
+          background-image: url("../../assets/icons/delete.svg");
           background-size: cover;
           width: 24px;
           height: 24px;
@@ -179,13 +196,10 @@ export default {
         }
 
         .list__management-open {
-          background-image: url("../../assets/right.svg");
+          background-image: url("../../assets/icons/right.svg");
           background-size: cover;
           width: 24px;
           height: 24px;
-          //outline: none;
-          //border: none;
-          //padding: 0;
           background-color: white;
           cursor: pointer;
         }

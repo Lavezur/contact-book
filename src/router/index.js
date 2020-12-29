@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Main from '../views/main.vue'
+import Main from '../views/Main'
 
 const routes = [
   {
@@ -10,8 +10,8 @@ const routes = [
   {
     path: '/contactInfo/:id',
     name: 'contactInfo',
-    component: () => import('../views/contactInfo.vue')
-  }
+    component: () => import('../views/ContactInfo')
+  },
 ]
 
 const router = createRouter({

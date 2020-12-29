@@ -1,16 +1,20 @@
 <template>
   <nav class="navigation">
     <div class="navigation__text-content">
-      <h1 class="navigation__title">Книга Контактов</h1>
-      <span class="navigation__text">Приятно + полезно</span>
+      <h1 class="navigation__title">
+        Книга Контактов
+      </h1>
+      <span class="navigation__text">
+        Приятно + полезно
+      </span>
     </div>
-    <div class="navigation__logo"></div>
+    <div class="navigation__logo" />
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'navigation'
+  name: 'Navigation'
 }
 </script>
 
@@ -56,7 +60,7 @@ export default {
     .navigation__logo {
       width: 72px;
       height: 72px;
-      background-image: url("../../assets/computer.svg");
+      background-image: url("../../assets/icons/computer.svg");
       background-size: cover;
       margin: 25px 70px 0 0;
     }

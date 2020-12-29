@@ -1,29 +1,40 @@
 <template>
   <div class="popup-delete">
-
     <div class="popup-delete__container">
-
       <div class="popup-delete__header">
-        <div class="popup-delete__header-close" @click="closePopup"></div>
-        <span class="popup-delete__header-title">Удалить контакт ?</span>
+        <div class="popup-delete__header-close"
+             @click="closePopup"
+        />
+        <span class="popup-delete__header-title">
+          Удалить контакт ?
+        </span>
       </div>
-        <div class="popup-delete__delete" @click="deleteHandler"><span class="popup-delete__form-submit-text">Удалить</span></div>
-      <div class="popup-delete__cancel" @click="closePopup"><span class="popup-delete__form-submit-text">Отменить</span></div>
-
+        <div class="popup-delete__delete"
+             @click="deleteHandler">
+          <span class="popup-delete__form-submit-text">
+            Удалить
+          </span>
+        </div>
+      <div class="popup-delete__cancel"
+           @click="closePopup">
+        <span class="popup-delete__form-submit-text">
+          Отменить
+        </span>
+      </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-name: "deletecontact",
+name: "DeleteContact",
 
   computed: {
     contact() {
       return this.$store.getters.contactsId(+this.$route.params.id)
     },
   },
+
 
   methods: {
     closePopup () {
@@ -106,7 +117,7 @@ name: "deletecontact",
       }
 
       .popup-delete__header-close {
-        background-image: url("../../assets/close.svg");
+        background-image: url("../../assets/icons/close.svg");
         width: 24px;
         height: 24px;
         background-size: cover;

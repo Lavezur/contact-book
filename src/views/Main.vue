@@ -1,28 +1,31 @@
 <template>
   <div class="main">
-
-    <Popup
+    <NewContact
       v-if="isPopupVisible"
       @closePopup="closeContactPopup"
     />
-
     <div class="main__wrapper">
-      <div class="main__create-button" @click="showPopup"><p class="main__create-button-text">Добавить контакт</p>
+      <div class="main__create-button"
+           @click="showPopup"
+      >
+        <p class="main__create-button-text">
+          Добавить контакт
+        </p>
       </div>
-      <contactlist/>
+      <contactList />
     </div>
   </div>
 </template>
 
 <script>
-import Popup from '../components/popup\'s/newcontact.vue'
-import Contactlist from "@/components/contactList/contactlist"
+import NewContact from '../components/Popup\'s/NewContact'
+import ContactList from '../components/ContactList/ContactList'
 
 export default {
   name: 'Main',
   components: {
-    Contactlist,
-    Popup
+    ContactList,
+    NewContact
   },
 
   data () {
@@ -56,6 +59,7 @@ export default {
     display: flex;
     flex-direction: column;
     min-height: 800px;
+    margin-top: -10px;
 
     .main__create-button {
       margin: 18px 0 0 56px;

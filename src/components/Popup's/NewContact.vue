@@ -2,17 +2,51 @@
   <div class="popup">
     <div class="popup__container">
       <div class="popup__header">
-        <span class="popup__header-title">Добавьте Контакт</span>
-        <div class="popup__header-close" @click="closePopup"></div>
+        <span class="popup__header-title">
+          Добавьте Контакт
+        </span>
+        <div class="popup__header-close"
+             @click="closePopup"
+        />
       </div>
-      <form class="popup__form" method="post" novalidate name="popupForm" @submit.prevent="submitHandler">
+      <form class="popup__form"
+            method="post"
+            novalidate
+            name="popupForm"
+            @submit.prevent="submitHandler"
+      >
         <label class="popup__form-label">
-          <input type="text" class="popup__form-name popup__form-input" placeholder="Имя" id="contName" v-model="contName">
-          <input type="text" class="popup__form-workplace popup__form-input" placeholder="Место работы" id="contWorkplace" v-model="contWorkplace">
-          <input type="tel" class="popup__form-number popup__form-input" placeholder="Контактный номер" id="contPhone" v-model="contPhone">
-          <input type="email" class="popup__form-mail popup__form-input" placeholder="Email" id="contMail" v-model="contMail">
+          <input type="text"
+                 class="popup__form-name popup__form-input"
+                 placeholder="Имя"
+                 id="contName"
+                 v-model="contName"
+          />
+          <input type="text"
+                 class="popup__form-workplace popup__form-input"
+                 placeholder="Место работы"
+                 id="contWorkplace"
+                 v-model="contWorkplace"
+          />
+          <input type="tel"
+                 class="popup__form-number popup__form-input"
+                 placeholder="Контактный номер"
+                 id="contPhone"
+                 v-model="contPhone"
+          />
+          <input type="email"
+                 class="popup__form-mail popup__form-input"
+                 placeholder="Email"
+                 id="contMail"
+                 v-model="contMail"
+          />
         </label>
-        <button class="popup__form-submit" type="submit"><span class="popup__form-submit-text">Сохранить</span></button>
+        <button class="popup__form-submit"
+                type="submit">
+          <span class="popup__form-submit-text">
+            Сохранить
+          </span>
+        </button>
       </form>
     </div>
   </div>
@@ -20,17 +54,15 @@
 
 <script>
 export default {
-  name: 'newcontact',
+  name: 'NewContact',
 
-  data: () => ({
-    contName: '',
-    contWorkplace: '',
-    contPhone: '',
-    contMail: ''
-  }),
-
-  mounted() {
-
+  data () {
+    return {
+      contName: '',
+      contWorkplace: '',
+      contPhone: '',
+      contMail: ''
+    }
   },
 
   methods: {
@@ -93,7 +125,7 @@ export default {
           margin-left: 40px;
         }
         .popup__header-close {
-          background-image: url("../../assets/close.svg");
+          background-image: url("../../assets/icons/close.svg");
           width: 24px;
           height: 24px;
           background-size: cover;
