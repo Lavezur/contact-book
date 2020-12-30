@@ -70,7 +70,9 @@
               />
             </label>
           </div>
-          <OtherUserInfo />
+          <OtherUserInfo
+            :id="this.contact.id"
+          />
         </div>
         <div class="btn__wrapper">
           <button class="btn" type="button"
@@ -105,7 +107,7 @@ export default {
   name: 'ContactInfo',
 
   computed: {
-    contact() {
+    contact () {
       return this.$store.getters.contactsId(+this.$route.params.id)
     },
   },

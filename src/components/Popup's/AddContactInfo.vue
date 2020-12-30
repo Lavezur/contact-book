@@ -58,12 +58,12 @@ export default {
     },
 
     submitHandler () {
-      const otherInfo = {
+      const other = {
         contAttribute: this.contAttribute,
         contAttValue: this.contAttValue,
         id: Date.now()
       }
-      this.$store.dispatch('createOther', otherInfo )
+      this.$store.dispatch('createOther', other )
       this.closePopup()
     }
   }

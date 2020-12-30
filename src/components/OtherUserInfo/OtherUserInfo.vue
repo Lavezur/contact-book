@@ -5,20 +5,21 @@
   />
   <div class="other-info">
     <div class="other-info__content"
-         v-if="others.length"
+         v-if="other.length"
     >
-      <div class="other-info__content-wrapper"
-           v-for="(other) in others"
-           :key="other.id"
-      >
+      <div class="other-info__content-wrapper">
         <div class="other-info__box">
           <label>
             <input class="other-info__input other-info__attribute"
+                   placeholder="Название"
+                   id="contAttribute"
                    v-model="contAttribute"
             />
           </label>
           <label>
             <input class="other-info__input other-info__attribute-value"
+                   placeholder="Значение"
+                   id="contAttValue"
                    v-model="contAttValue"
             />
           </label>
@@ -43,12 +44,11 @@ import AddContactInfo from "../Popup's/AddContactInfo";
 export default {
   name: "OtherUserInfo",
 
+  props: ['id'],
+
   computed: {
-    others () {
-      return this.$store.getters.others
-    },
     other () {
-      return this.$store.getters.othersId(+this.$route.params.id)
+      return this.$store.getters.others
     }
   },
 
@@ -110,6 +110,11 @@ export default {
         margin: 0 auto;
         cursor: pointer;
       }
+    }
+
+    .other-info__null {
+      margin: 0 auto 20px;
+      width: fit-content;
     }
   }
 </style>

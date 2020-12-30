@@ -69,6 +69,7 @@ export default {
     closePopup () {
       this.$emit('closePopup')
     },
+
     submitHandler () {
       const contact = {
         contName: this.contName,
