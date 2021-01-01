@@ -42,13 +42,11 @@
 <script>
 import AddContactInfo from "../Popup's/AddContactInfo";
 export default {
-  name: "OtherUserInfo",
-
-  props: ['id'],
+  name: "ContactOtherInfo",
 
   computed: {
     other () {
-      return this.$store.getters.others
+      return this.$store.getters.othersId(+this.$route.params.id)
     }
   },
 
@@ -64,7 +62,7 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     this.contAttribute = this.other.contAttribute
     this.contAttValue = this.other.contAttValue
   },
