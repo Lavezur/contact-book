@@ -13,7 +13,7 @@ const store = new Vuex.Store({
             localStorage.setItem('contacts', JSON.stringify(state.contacts))
         },
 
-        createOthers (state, other) {
+        createOther (state, other) {
             state.others.push(other)
 
             localStorage.setItem('others', JSON.stringify(state.others))
@@ -32,7 +32,7 @@ const store = new Vuex.Store({
             localStorage.setItem('contacts', JSON.stringify(state.contacts))
         },
 
-        updateOthers (state, {id, contAttribute, contAttValue}) {
+        updateOther (state, {id, contAttribute, contAttValue}) {
             const others = state.others.concat()
 
             const index = others.findIndex(t => t.id === id)
@@ -72,7 +72,7 @@ const store = new Vuex.Store({
         },
 
         createOther ({commit}, other) {
-            commit('createOthers', other)
+            commit('createOther', other)
         },
 
         updateContact ({commit}, contact) {
@@ -80,7 +80,7 @@ const store = new Vuex.Store({
         },
 
         updateOther ({commit}, other) {
-            commit('updateOthers', other)
+            commit('updateOther', other)
         },
 
         deleteHandler ({commit}, contact, id) {

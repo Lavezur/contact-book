@@ -12,18 +12,18 @@
       <form class="popup-add__form"
             method="post"
             novalidate
-            name="popupForm"
+            name="popup-add-Form"
             @submit.prevent="submitHandler"
       >
         <label class="popup-add__form-label">
           <input type="text"
-                 class="popup-add__form-name popup-add__form-input"
+                 class="popup-add__form-input"
                  placeholder="Название"
                  id="contAttribute"
                  v-model="contAttribute"
           />
           <input type="text"
-                 class="popup-add__form-workplace popup-add__form-input"
+                 class="popup-add__form-input"
                  placeholder="Значение"
                  id="contAttValue"
                  v-model="contAttValue"
@@ -63,8 +63,8 @@ export default {
         contAttValue: this.contAttValue,
         id: Date.now()
       }
-      this.$store.dispatch('createOther', other )
-      this.closePopup()
+      this.$store.dispatch('createOther', other)
+      this.$emit('closePopup')
     }
   }
 }

@@ -82,7 +82,7 @@
 <script>
 import DeleteContact from "../Popup\'s/DeleteContact";
 export default {
-name: "ContactMainInfo",
+  name: "ContactMainInfo",
 
   computed: {
     contact () {

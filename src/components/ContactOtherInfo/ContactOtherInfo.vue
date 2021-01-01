@@ -3,9 +3,7 @@
       v-if="isPopupAddVisible"
       @closePopup="closePopupAdd "
   />
-  <div class="other-info"
-       v-if="other.length"
-  >
+  <div class="other-info">
     <div class="other-info__content"
          v-for="(item) of other"
          :key="item.id"
@@ -35,11 +33,11 @@
       />
     </div>
   </div>
-  <p class="other-info__null"
-     v-else
-  >
-    Добавьте дополнительную информацию
-  </p>
+<!--  <p class="other-info__null"-->
+<!--     v-else-->
+<!--  >-->
+<!--    Добавьте дополнительную информацию-->
+<!--  </p>-->
 </template>
 
 <script>
@@ -48,7 +46,7 @@ export default {
   name: "ContactOtherInfo",
 
   computed: {
-    others () {
+    other () {
       return this.$store.getters.othersId(+this.$route.params.id)
     }
   },
@@ -64,8 +62,8 @@ export default {
   },
 
   mounted () {
-    this.contAttribute = this.others.contAttribute
-    this.contAttValue = this.others.contAttValue
+    this.contAttribute = this.other.contAttribute
+    this.contAttValue = this.other.contAttValue
   },
 
   methods: {
@@ -79,7 +77,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .other-info {
     max-width: 800px;
     width: 100%;
