@@ -3,40 +3,43 @@
       v-if="isPopupAddVisible"
       @closePopup="closePopupAdd "
   />
-  <div class="other-info">
+  <div class="other-info"
+       v-if="other.length"
+  >
     <div class="other-info__content"
-         v-if="other.length"
+         v-for="(item) of other"
+         :key="item.id"
     >
-      <div class="other-info__content-wrapper">
-        <div class="other-info__box">
-          <label>
-            <input class="other-info__input other-info__attribute"
-                   placeholder="Название"
-                   id="contAttribute"
-                   v-model="contAttribute"
-            />
-          </label>
-          <label>
-            <input class="other-info__input other-info__attribute-value"
-                   placeholder="Значение"
-                   id="contAttValue"
-                   v-model="contAttValue"
-            />
-          </label>
-        </div>
-      </div>
+      <form class="other-info__box">
+        <label class="other-info__label other-info__label-attribute">
+          <input class="other-info__input other-info__attribute"
+                 type="text"
+                 placeholder="Название"
+                 id="contAttribute"
+                 v-model="contAttribute"
+          />
+        </label>
+        <label class="other-info__label other-info__label-attribute-value">
+          <input class="other-info__input other-info__attribute-value"
+                 type="text"
+                 placeholder="Значение"
+                 id="contAttValue"
+                 v-model="contAttValue"
+          />
+        </label>
+      </form>
     </div>
-    <p class="other-info__null"
-       v-else
-    >
-      Добавьте дополнительную информацию
-    </p>
     <div class="other-info__add">
       <div class="other-info__add-button"
            @click="showPopupAdd"
       />
     </div>
   </div>
+  <p class="other-info__null"
+     v-else
+  >
+    Добавьте дополнительную информацию
+  </p>
 </template>
 
 <script>
@@ -45,26 +48,24 @@ export default {
   name: "ContactOtherInfo",
 
   computed: {
-    other () {
+    others () {
       return this.$store.getters.othersId(+this.$route.params.id)
     }
   },
+
+  data: () => ({
+    contAttribute: '',
+    contAttValue: '',
+    isPopupAddVisible: false
+  }),
 
   components: {
     AddContactInfo
   },
 
-  data () {
-    return {
-      contAttribute: '',
-      contAttValue: '',
-      isPopupAddVisible: false
-    }
-  },
-
   mounted () {
-    this.contAttribute = this.other.contAttribute
-    this.contAttValue = this.other.contAttValue
+    this.contAttribute = this.others.contAttribute
+    this.contAttValue = this.others.contAttValue
   },
 
   methods: {
@@ -80,20 +81,41 @@ export default {
 
 <style lang="scss">
   .other-info {
-    margin-top: 40px;
+    max-width: 800px;
+    width: 100%;
+    margin: 40px auto 0;
+    padding-bottom: 60px;
 
-    .other-info__content-wrapper {
+    .other-info__box {
+      display: flex;
+      margin-bottom: 30px;
 
-      .other-info__box {
-        display: flex;
+      .other-info__label {
 
-        .other-info__attribute {
-
+        .other-info__input {
+          outline: none;
+          border: none;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 22px;
+          color: #F1A761;
+          padding-left: 15px;
         }
 
         .other-info__attribute-value {
-
+          color: #454242;
         }
+      }
+
+      .other-info__label-attribute {
+        margin-right: 20px;
+        max-width: 200px;
+      }
+
+      .other-info__label-attribute-value {
+        width: 100%;
+        border-bottom: 1px solid #F1A761;
+        padding-bottom: 10px;
       }
     }
 
@@ -109,10 +131,10 @@ export default {
         cursor: pointer;
       }
     }
+  }
 
-    .other-info__null {
-      margin: 0 auto 20px;
-      width: fit-content;
-    }
+  .other-info__null {
+    margin: 0 auto 20px;
+    width: fit-content;
   }
 </style>

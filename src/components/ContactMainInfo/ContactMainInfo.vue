@@ -87,7 +87,7 @@ name: "ContactMainInfo",
   computed: {
     contact () {
       return this.$store.getters.contactsId(+this.$route.params.id)
-    },
+    }
   },
 
   data: () => ({

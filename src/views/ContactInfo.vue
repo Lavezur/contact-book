@@ -2,15 +2,17 @@
   <div class="contact-info"
        v-if="contact"
   >
-    <router-link tag="button"
-                 :to="'/'"
-                 class="contact-info__back-button"
-    >
-      <div class="contact-info__back-icon" />
-      <span class="contact-info__back-text">
-          Назад
-        </span>
-    </router-link>
+    <div class="contact-info__back-wrapper">
+      <router-link tag="button"
+                   :to="'/'"
+                   class="contact-info__back-button"
+      >
+        <div class="contact-info__back-icon" />
+        <span class="contact-info__back-text">
+            Назад
+          </span>
+      </router-link>
+    </div>
     <ContactMainInfo />
     <ContactOtherInfo />
   </div>
@@ -51,28 +53,32 @@ export default {
     border-radius: 5px;
     min-height: 720px;
 
-    .contact-info__back-button {
-      display: flex;
-      flex-direction: row;
-      max-width: fit-content;
-      cursor: pointer;
-      padding: 60px 0 0 40px;
+    .contact-info__back-wrapper {
+      padding: 60px 0 0 60px;
+      width: fit-content;
 
-      .contact-info__back-icon {
-        background-image: url("../assets/icons/backarrow.svg");
-        width: 19px;
-        height: 16px;
-        background-size: cover;
-        align-self: center;
-      }
+      .contact-info__back-button {
+        display: flex;
+        flex-direction: row;
+        max-width: fit-content;
+        cursor: pointer;
 
-      .contact-info__back-text {
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 22px;
-        text-transform: capitalize;
-        color: #454242;
-        margin-left: 10px;
+        .contact-info__back-icon {
+          background-image: url("../assets/icons/backarrow.svg");
+          width: 19px;
+          height: 16px;
+          background-size: cover;
+          align-self: center;
+        }
+
+        .contact-info__back-text {
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 22px;
+          text-transform: capitalize;
+          color: #454242;
+          margin-left: 10px;
+        }
       }
     }
   }
