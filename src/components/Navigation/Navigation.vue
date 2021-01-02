@@ -1,13 +1,16 @@
 <template>
   <nav class="navigation">
-    <div class="navigation__text-content">
+    <router-link
+        class="navigation__text-content"
+        :to="'/'"
+    >
       <h1 class="navigation__title">
         Книга Контактов
       </h1>
       <span class="navigation__text">
         Приятно + полезно
       </span>
-    </div>
+    </router-link>
     <div class="navigation__logo" />
   </nav>
 </template>
@@ -37,6 +40,7 @@ export default {
       display: flex;
       flex-direction: column;
       margin: 35px 0 0 78px;
+      color: white;
 
       .navigation__title {
         font-weight: bold;

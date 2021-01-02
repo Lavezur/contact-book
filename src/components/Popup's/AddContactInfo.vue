@@ -62,7 +62,7 @@ export default {
         contAttribute: this.contAttribute,
         contAttValue: this.contAttValue,
       }
-      this.$store.dispatch('updateContact', other)
+      this.$store.dispatch('addOtherInfo', other)
       this.$emit('closePopup')
     }
   }
