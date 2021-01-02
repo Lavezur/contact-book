@@ -47,7 +47,7 @@ export default {
 
   computed: {
     other () {
-      return this.$store.getters.othersId(+this.$route.params.id)
+      return this.$store.getters.others
     }
   },
 

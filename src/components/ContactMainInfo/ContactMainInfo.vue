@@ -19,6 +19,7 @@
                    placeholder="Имя"
                    id="contName"
                    v-model="contName"
+                   @change="submitHandler"
             />
           </label>
         </div>
@@ -32,7 +33,7 @@
                    placeholder="Место работы"
                    id="contWorkplace"
                    v-model="contWorkplace"
-
+                   @change="submitHandler"
             />
           </label>
         </div>
@@ -44,6 +45,7 @@
                    placeholder="Контактный номер"
                    id="contPhone"
                    v-model="contPhone"
+                   @change="submitHandler"
             />
           </label>
         </div>
@@ -55,6 +57,7 @@
                    placeholder="Email"
                    id="contMail"
                    v-model="contMail"
+                   @change="submitHandler"
             />
           </label>
         </div>
@@ -65,13 +68,6 @@
         >
             <span class="btn-text">
               Удалить
-            </span>
-        </button>
-        <button class="btn btn-green"
-                type="submit"
-        >
-            <span class="btn-text btn-edit">
-              Сохранить
             </span>
         </button>
       </div>
@@ -87,7 +83,7 @@ export default {
   computed: {
     contact () {
       return this.$store.getters.contactsId(+this.$route.params.id)
-    }
+    },
   },
 
   data: () => ({
@@ -115,10 +111,9 @@ export default {
         id: this.contact.id,
         contName: this.contName,
         contWorkplace: this.contWorkplace,
-        contPhone: this.contWorkplace,
+        contPhone: this.contPhone,
         contMail: this.contMail
       })
-      this.$router.push('/')
     },
     showPopupDelete () {
       this.isPopupDeleteVisible = true
