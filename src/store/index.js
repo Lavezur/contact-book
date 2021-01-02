@@ -19,13 +19,13 @@ const store = new Vuex.Store({
             localStorage.setItem('others', JSON.stringify(state.others))
         },
 
-        updateContact (state, {id, contName, contWorkplace, contPhone, contMail}) {
+        updateContact (state, {id, contName, contWorkplace, contPhone, contMail, contAttribute, contAttValue}) {
             const contacts = state.contacts.concat()
 
             const index = contacts.findIndex(t => t.id === id)
             const contact = contacts[index]
 
-            contacts[index] = {...contact, contName, contWorkplace, contPhone, contMail}
+            contacts[index] = {...contact, contName, contWorkplace, contPhone, contMail, contAttribute, contAttValue}
 
             state.contacts = contacts
 
@@ -96,7 +96,7 @@ const store = new Vuex.Store({
         contacts: s => s.contacts,
         contactsId: s => id => s.contacts.find(t => t.id === id),
         others: q => q.others,
-        othersId: q => id => q.others.find(t => t.id === id)
+        othersId: q => id => q.others.find(p => p.id === id)
     }
 })
 

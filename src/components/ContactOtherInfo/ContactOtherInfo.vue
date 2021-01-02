@@ -5,8 +5,6 @@
   />
   <div class="other-info">
     <div class="other-info__content"
-         v-for="(item) of other"
-         :key="item.id"
     >
       <form class="other-info__box">
         <label class="other-info__label other-info__label-attribute">
@@ -33,11 +31,6 @@
       />
     </div>
   </div>
-<!--  <p class="other-info__null"-->
-<!--     v-else-->
-<!--  >-->
-<!--    Добавьте дополнительную информацию-->
-<!--  </p>-->
 </template>
 
 <script>
@@ -46,8 +39,8 @@ export default {
   name: "ContactOtherInfo",
 
   computed: {
-    other () {
-      return this.$store.getters.others
+    others () {
+      return this.$store.getters.contactsId(+this.$route.params.id)
     }
   },
 
@@ -62,8 +55,8 @@ export default {
   },
 
   mounted () {
-    this.contAttribute = this.other.contAttribute
-    this.contAttValue = this.other.contAttValue
+    this.contAttribute = this.others.contAttribute
+    this.contAttValue = this.others.contAttValue
   },
 
   methods: {

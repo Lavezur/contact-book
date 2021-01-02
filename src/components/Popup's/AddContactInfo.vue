@@ -61,9 +61,8 @@ export default {
       const other = {
         contAttribute: this.contAttribute,
         contAttValue: this.contAttValue,
-        id: Date.now()
       }
-      this.$store.dispatch('createOther', other)
+      this.$store.dispatch('updateContact', other)
       this.$emit('closePopup')
     }
   }
